@@ -133,6 +133,7 @@ func (hl HTTPLoader) makeClient(ctx caddy.Context) (*http.Client, error) {
 				cert.SupportedSignatureAlgorithms = []tls.SignatureScheme{tls.PKCS1WithSHA1, tls.PKCS1WithSHA256}
 				certs[k] = cert
 			}
+
 			tlsConfig.Certificates = certs
 		} else if hl.TLS.ClientCertificateFile != "" && hl.TLS.ClientCertificateKeyFile != "" {
 			cert, err := tls.LoadX509KeyPair(hl.TLS.ClientCertificateFile, hl.TLS.ClientCertificateKeyFile)
